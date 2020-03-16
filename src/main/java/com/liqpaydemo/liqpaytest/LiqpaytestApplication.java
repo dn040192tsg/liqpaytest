@@ -20,7 +20,7 @@ public class LiqpaytestApplication {
 
 }
 
-    @GetMapping("/")
+    @GetMapping( "/")
     public String liqpaytest(@RequestParam String sum) {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("action", "pay");
