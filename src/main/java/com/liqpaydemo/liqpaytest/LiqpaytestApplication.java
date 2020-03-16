@@ -21,10 +21,10 @@ public class LiqpaytestApplication {
 }
 
     @GetMapping( "/")
-    public String liqpaytest(@RequestParam String sum) {
+    public String liqpaytest(@RequestParam(required = false, defaultValue = "1") String amount ) {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("action", "pay");
-        params.put("amount", sum);
+        params.put("amount", amount);
         params.put("currency", "USD");
         params.put("description", "description text");
         params.put("order_id", "order_id_1");
