@@ -1,10 +1,13 @@
 package com.liqpaydemo.liqpaytest;
 
+import com.liqpay.LiqPay;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 
 @SpringBootApplication
 @RestController
@@ -18,7 +21,18 @@ public class LiqpaytestApplication {
 
     @GetMapping("/")
     public String liqpaytest() {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("action", "pay");
+        params.put("amount", "1");
+        params.put("currency", "USD");
+        params.put("description", "description text");
+        params.put("order_id", "order_id_1");
+        params.put("version", "3");
 
-        return "hello world";
+
+        LiqPay liqpay = new LiqPay("i66823577067"
+                , "RUtwa6WZfpnbcgEZKANifBXc8Rz0z2usEp9a8kP9");
+        String html = liqpay.cnb_form(params);
+        return html;
     }
 }
