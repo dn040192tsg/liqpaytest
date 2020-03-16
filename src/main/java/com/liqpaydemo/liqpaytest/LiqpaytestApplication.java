@@ -21,18 +21,21 @@ public class LiqpaytestApplication {
 }
 
     @GetMapping( "/")
-    public String liqpaytest(@RequestParam(required = false, defaultValue = "1") String amount ) {
+    public String liqpaytest(@RequestParam(required = false, defaultValue = "1") String amount,
+                             @RequestParam(required = false, defaultValue = "USD") String currency,
+                             @RequestParam(required = false, defaultValue = "i66823577067") String publicKey,
+                             @RequestParam(required = false, defaultValue = "RUtwa6WZfpnbcgEZKANifBXc8Rz0z2usEp9a8kP9") String privateKey) {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("action", "pay");
         params.put("amount", amount);
-        params.put("currency", "USD");
+        params.put("currency", currency);
         params.put("description", "description text");
         params.put("order_id", "order_id_1");
         params.put("version", "3");
 
 
-        LiqPay liqpay = new LiqPay("i66823577067"
-                , "RUtwa6WZfpnbcgEZKANifBXc8Rz0z2usEp9a8kP9");
+        LiqPay liqpay = new LiqPay(publicKey
+                , privateKey);
         String html = liqpay.cnb_form(params);
         return html;
     }
