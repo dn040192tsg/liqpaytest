@@ -19,6 +19,6 @@ public class LiqpaytestApplication {
     @GetMapping("/")
     public String liqpaytest() {
 
-        return "hello";
+        return "hello world";
     }
 }
