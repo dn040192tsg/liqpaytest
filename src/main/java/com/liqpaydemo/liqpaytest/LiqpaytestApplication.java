@@ -20,7 +20,7 @@ public class LiqpaytestApplication {
 
 }
 
-    @GetMapping( "/")
+    @GetMapping("/")
     public String liqpaytest(@RequestParam(required = false, defaultValue = "1") String amount,
                              @RequestParam(required = false, defaultValue = "USD") String currency,
                              @RequestParam(required = false, defaultValue = "i66823577067") String publicKey,
