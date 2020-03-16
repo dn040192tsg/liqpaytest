@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -20,10 +21,10 @@ public class LiqpaytestApplication {
 }
 
     @GetMapping("/")
-    public String liqpaytest() {
+    public String liqpaytest(@RequestParam String sum) {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("action", "pay");
-        params.put("amount", "1");
+        params.put("amount", sum);
         params.put("currency", "USD");
         params.put("description", "description text");
         params.put("order_id", "order_id_1");
